@@ -30,13 +30,27 @@ public class MainActivity extends AppCompatActivity {
         notesTitle = findViewById(R.id.notes_title);
         mainLayout = findViewById(R.id.main_layout); // Asegúrate de que el ID sea correcto en tu XML
 
+        SharedPreferences sharedPreferences = getSharedPreferences("AppSettings", MODE_PRIVATE);
+        String colorFondo = sharedPreferences.getString("backgroundColor", "#FFFFFF");
+
         // Configurar el botón para acceder a la configuración
         configButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Aplicar animaciones
+
+                boolean isAuthEnabled = sharedPreferences.getBoolean("authEnabled", false);
+
+                if (isAuthEnabled) {
+                    // Si la autenticación está activada, redirige a LoginActivity
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Aplicar animaciones
+                } else {
+                    // Si la autenticación está desactivada, redirige directamente a ConfigActivity
+                    Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out); // Aplicar animaciones
+                }
             }
         });
     }
