@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText passwordInput;
+    EditText passwordInput,userInput;
     Button loginButton;
 
     @Override
@@ -23,14 +23,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        userInput = findViewById(R.id.usuarioInput);
         passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String usuario = userInput.getText().toString();
                 String password = passwordInput.getText().toString();
-                if (checkPassword(password)) {
+                if (checkUser(usuario) && checkPassword(password)) {
                     // Si la contraseña es correcta, ir a la configuración
                     Intent intent = new Intent(LoginActivity.this, ConfigActivity.class);
                     startActivity(intent);
@@ -46,5 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         // Puedes cambiar esta lógica según tus necesidades
         return password.equals("1234"); // Contraseña fija como ejemplo
     }
-}
 
+    private boolean checkUser(String user) {
+        // Puedes cambiar esta lógica según tus necesidades
+        return user.equals("abcd"); // Usuario fija como ejemplo
+    }
+}

@@ -19,6 +19,25 @@
         android:layout_height="wrap_content"
         android:text="Activar Autenticación" />
 
+    <Switch
+        android:id="@+id/segSwitch"
+        android:layout_margin="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activar Seguimiento" />
+
+    <EditText
+        android:id="@+id/txtColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese Color de Fondo" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:text="Guardar Color" />
 
     <TextView
         android:id="@+id/regis_title"
@@ -32,7 +51,7 @@
         android:id="@+id/txtUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Introduce tu suposición" />
+        android:hint="Introduce tu Usuario" />
 
 
     <EditText
@@ -40,13 +59,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:hint="Introduce tu Contraseña"/>
 
     <Button
-        android:id="@+id/button"
-        android:layout_margin="10sp"
+        android:id="@+id/buttonUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar usuario" />
+        android:layout_margin="10sp"
+        android:text="Guardar Usuario" />
 
 </LinearLayout>
